@@ -21,6 +21,7 @@ class _AuthFormState extends State<AuthForm> {
       _formKey.currentState!.save();
       print(_userEmail);
       print(_userName);
+      print(_userPassword);
     }
   }
 
