@@ -41,3 +41,9 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+// import 'dart:io'; // at beginning of file
+// ...
+// final picker = ImagePicker();
+// final pickedImage = await picker.getImage(...);
+// final pickedImageFile = File(pickedImage.path); // require
