@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import './screens/chat_screen.dart';
 import './screens/auth_screen.dart';
+import './screens/splash_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,6 +33,9 @@ class MyApp extends StatelessWidget {
       home: StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (ctx, userSnapshot) {
+          if (userSnapshot.connectionState == ConnectionState.waiting) {
+            return SplashScreen();
+          }
           if (userSnapshot.hasData) {
             return ChatScreen();
           }
@@ -41,9 +45,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// import 'dart:io'; // at beginning of file
-// ...
-// final picker = ImagePicker();
-// final pickedImage = await picker.getImage(...);
-// final pickedImageFile = File(pickedImage.path); // require
